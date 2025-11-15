@@ -38,10 +38,10 @@ def handle_hello():
     return jsonify(members), 200
 
 
-@app.route('/member/<int:member_id>', methods=['GET'])
+@app.route('/members/<int:member_id>', methods=['GET'])
 def single_member(member_id):
     member = jackson_family.get_member(member_id)
-    if member is none:
+    if member is None:
         return jsonify({"error": "miembro no encontrado"}), 404
     return jsonify(member), 200
 
@@ -55,7 +55,7 @@ def create_members():
     new_member = jackson_family.add_member(body)
     return jsonify(new_member), 200
 
-@app.route('/member/<int:member_id>', methods=['DELETE'])
+@app.route('/members/<int:member_id>', methods=['DELETE'])
 def deleted_member(member_id):
     deleted = jackson_family.delete_member(member_id)
     if not deleted:
